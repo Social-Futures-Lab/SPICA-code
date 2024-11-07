@@ -1,0 +1,187 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Interactive Chat Exploration Tool</title>
+
+    <!-- base layout -->
+    <link rel="stylesheet" href="css/base.css" />
+
+    <!-- a very good and light DOM manipulator library -->
+    <script src="https://pettanjs.github.io/dfcjs/dfc.js"></script>
+    <!-- a very good third party markdown renderer -->
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+
+    <!-- some reusable components -->
+    <script src="js/accordion-page.js"></script>
+    <script src="js/chat-panel.js"></script>
+    <script src="js/choice-list.js"></script>
+    <script src="js/platform.js"></script>
+    <script src="js/task-manager.js"></script>
+
+    <!-- the main application -->
+    <script src="js/app.eval.js"></script>
+
+  </head>
+  <body>
+    <div class="container vspace-md">
+      <header>
+        <div class="progress" role="progressbar">
+          <div id="main-progress" class="progress-bar" style="width: 10%"></div>
+        </div>
+        <div id="main-progress-label" class="label"></div>
+      </header>
+
+      <section id="survey" class="vspace-sm closed">
+        <h2>Thank you!</h2>
+        <p>Thanks for participating in our study! If you have any feedback for our study, feel free to note them in the entry box below. For other questions or concerns, feel free to reach out to us directly via email or the recruitment platform.</p>
+        <textarea id="feedback" class="form-control" placeholder="(Optional: Please put any comments about our study here.)"></textarea>
+        <div id="platform-request-id" class="alert alert-primary">
+          <h4>Participation Identifier</h4>
+          <p>We failed to get your participant identifier automatically. As noted at the beginning, please provide us with your identifier (e.g., Prolific ID, MTurk Worker ID):</p>
+          <input id="platform-participant-id" type="text" value="" class="form-control" />
+        </div>
+        <!-- submit -->
+        <div id="survey-choice-list"></div>
+      </section>
+
+      <section id="task" class="vspace-sm closed">
+        <h2>Help us understand your preferences for AI behavior</h2>
+        <p>
+          In the area below, you will see a conversation between a <span class="hint-user">user</span> and a AI-backed <span class="hint-chatbot">chatbot</span>:
+        </p>
+        <!-- chat preview area -->
+        <div id="task-chat-panel" class="panel chat">
+        </div>
+
+        <article id="task-initial" class="closed">
+          <div class="confirm">
+            <p>
+              In this conversation, it will be the <span class="hint-chatbot">chatbot</span>'s turn to respond (as shown above).
+              Once you continue, we will show you several different responses <strong>by different chatbots</strong>. 
+			  Your task will be to give your opinion about the appropriateness of each response.
+            </p>
+            <!-- continue -->
+            <div id="task-initial-choice-list"></div>
+          </div>
+        </article>
+
+        <!-- question list-->
+        <article id="task-question-rate-response" class="question closed">
+          <h4>Question</h4>
+          <div class="text">
+            Consider this response from one of the chatbot systems for the conversation above (you may need to scroll to view the entire response).
+            On a scale from 1 to 5, how appropriate is this response?
+          </div>
+          <div class="options">
+            <div id="task-response-preferences-choice-list"></div>
+			<div>Note: Clicking on the rating number or entering it on your keyboard will show its description. You can switch your rating until you hit [Confirm].</div>
+          </div>
+        </article>
+
+        <article id="task-question-rate-strategy" class="question closed">
+          <h4>Question</h4>
+          <div class="text">
+            The response above was produced by <span id="task-strategy-desc" class="hint-strategy">{{ STRATEGY }}</span>.
+            Given the responses you've seen so far, on a scale from 1 to 5, how appropriate is this <strong>chatbot</strong> overall?
+          </div>
+          <div class="options">
+            <div id="task-strategy-preferences-choice-list"></div>
+			<div>Note: Clicking on the rating number or entering it on your keyboard will show its description. You can switch your rating until you hit [Confirm].</div>
+          </div>
+        </article>
+
+        <article id="task-question-rating-test" class="question closed">
+          <h4>Interface Question</h4>
+          <div class="text">
+            In this survey, when I want to indicate that <span id="task-test-rating-desc" class="hint-level"></span>, I should pick the following rating score:
+          </div>
+          <div class="options">
+            <div id="task-test-preferences-choice-list"></div>
+			<div>Note: You must select the exact rating as indicated above. Clicking on the rating number or entering it on your keyboard will show its description. You can switch your rating until you hit [Confirm].</div>
+          </div>
+        </article>
+      </section>
+
+      <section id="instructions" class="vspace-sm closed">
+
+        <h1>Welcome!</h1>
+        <p>
+          We are researchers from the University of Washington and we are conducting a study to understand people's preferences on the behavior of generative AI chatbots or virtual assistants.
+
+          Generative AI chatbots and assistants (examples include OpenAI's ChatGPT, Microsoft Copilot, and Google Gemini) are computer programs designed to generate text in response to user questions or prompts.
+          However, without guidance, AI systems can also generate content that is inappropriate, especially for more challenging or controversial user prompts.
+
+          <strong>In this study, we would like to understand your personal preferences and perceptions around what an appropriate response by an AI chatbot or assistant might be.</strong>
+        </p>
+        <div class="alert alert-primary">
+          Before we continue, please first make sure you are using a laptop or desktop computer.
+          Our task may not be compatible with mobile devices (phones or tablets).<br/>
+		  <strong>Important</strong>: Some participants have reported browser extensions changing the fonts or colors of text in this application resulting in difficulty viewing the task. If you encounter this (illegible or difficult to read text), please check any browser extensions you have enabled.
+        </div>
+        <p>
+          Please read through this information before agreeing to participate (if you wish to).
+          You may ask any questions before deciding to take part by contacting the research team.
+        </p>
+
+        <h3>What tasks will I be asked to complete?</h3>
+        <p>
+          During the study, you will be presented with a series of human-AI conversation examples where you will be asked to judge the appropriateness of the AI response to the human question or prompt.
+        </p>
+        <ul>
+          <li>For each conversation, you will first be shown a chat scenario that ends with a human question or prompt.</li>
+          <li>Then we will show you <strong>4 responses produced by different AI systems</strong> (one by one).</li>
+          <ul>
+            <li>For each response, we will ask you to <strong>rate the appropriateness</strong> of the response and strategy on a scale from 1 - 5.</li>
+            <li>Once you are done rating the response, we will move on to the next one.</li>
+          </ul>
+          <li>Once you are done rating all the responses of a scenario, we will show you the next scenario.</li>
+          <li>From time to time, we may also ask you simple questions about the interface to confirm your understanding of how to operate the ratings.</li>
+        </ul>
+        <p>
+          During the task, you may click on the buttons to make your selections, or use the keyboard shortcuts indicated on each button.
+        </p>
+
+        <h3>How will I be paid for this study?</h3>
+        <p>
+          We will provide compensation for your time participating in this study.
+          Each survey consists of a total of <strong>15 human conversation scenarios</strong> with <strong>5 responses each</strong> that we anticipate will take you approximately 30 minutes to evaluate.
+        </p>
+        <p>
+          You will be paid <strong>$6.00</strong> at the end of the study, which will be distributed upon completion of the study through the recruitment platform
+          that you were recruited on (e.g., Prolific).
+        </p>
+
+        <h3>Contact Information</h3>
+        <p>
+          If you have any questions or concerns, please contact the principal investigator in this study: Quan Ze Chen <code>cqz@cs.washington.edu</code>. You can also use the direct messaging
+          feature on the recruitment platform to contact us.
+        </p>
+
+        <div class="confirm">
+          <p>Once you have read the instructions above, please click the button below or press [Enter] on your keyboard if you wish to continue with the study. By continuing, you are confirming that you have read the information above and are 18 years of age or over</p>
+          <!-- continue -->
+          <div id="instructions-choice-list" class="choice-list">
+          </div>
+        </div>
+
+        <div id="platform-notice-noid" class="alert alert-primary">
+          <h4>Failed to get identifier</h4>
+          We could not automatically get your participant identifier from the recruitment platform.
+          This means we will need to ask you to provide it manually at the end of the survey.
+          Before proceeding, make sure you know what your identifier is to ensure your answers are recorded.
+        </div>
+      </section>
+
+      <section id="error" class="vspace-sm closed">
+        <h1>Error</h1>
+        <p>The application encountered an error. Details about the error are provided below:</p>
+        <code><pre id="error-stack-trace"></pre></code>
+        <p>Please contact the study coordinator and report this error by sending the information above.</p>
+        <p>If you encounter this error when submitting your task, please also send the data below to help us recover your answers:</p>
+        <code><pre id="error-results-snapshot"></pre></code>
+      </section>
+    </div>
+  </body>
+</html>

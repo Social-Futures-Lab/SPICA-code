@@ -1,0 +1,436 @@
+/**
+ Color Scheme from https://github.com/hardhackerlabs/themes
+**/
+*, ::after, ::before {
+  box-sizing: border-box;
+}
+
+*::selection {
+  background-color: #3f3951;
+  color: #eee9fc;
+}
+
+body {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  overflow-y: scroll;
+
+  padding: 0;
+  margin: 0;
+
+  background-color: #1a1721; /**#282433;*/
+  color: #eee9fc;
+
+  font-family: "Söhne", ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, Ubuntu, Cantarell, "Noto Sans", sans-serif, "Helvetica Neue", Arial, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+  font-size: 1rem;
+  font-weight: 400;
+  line-height: 1.5;
+
+  -webkit-text-size-adjust: 100%;
+  -webkit-tap-highlight-color: transparent;
+}
+
+::-webkit-scrollbar {
+  height: 0.5rem;
+  width: 0.5rem;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background-color: #938aad;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: #77708c;
+  border-color: #eee9fc;
+  border-radius: 9999px;
+  border-width: 1px;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  color: #e965a5;
+  margin-top: 0;
+  margin-bottom: 0.5rem;
+  font-weight: 500;
+  line-height: 1.2;
+  font-weight: 500;
+}
+
+h1::selection, h2::selection, h3::selection, h4::selection, h5::selection, h6::selection {
+  color: #e965a5;
+}
+
+h1 { font-size: 2.5rem; }
+h2 { font-size: 2rem; }
+h3 { font-size: 1.75rem; }
+h4 { font-size: 1.5rem; }
+h5 { font-size: 1.25rem; }
+h6 { font-size: 1rem; }
+
+strong, b {
+  color: #b3f4f3;
+}
+strong::selection, b::selection {
+  color: #b3f4f3;
+}
+
+p {
+  margin-top: 0;
+  margin-bottom: 1rem;
+}
+
+a, a::selection {
+  color: #e192ef;
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+/** Color Swatches **/
+.bg-base {
+  background-color: #1a1721;
+}
+
+.bg-primary {
+  background-color: #282433;
+}
+
+.bg-secondary {
+  background-color: #3f3951;
+}
+
+code {
+  background-color: #3f3951;
+  color: #b1f2a7;
+}
+
+blockquote {
+  background: #3f3951;
+  color: #938aad;
+  padding: 20px;
+}
+
+main a, main button, main input, main select, main textarea, main h2, main h3, main h4, main [tabindex="0"] {
+  scroll-margin-top: 80px;
+  scroll-margin-bottom: 100px;
+}
+
+button, input, optgroup, select, textarea {
+  margin: 0;
+  font-family: inherit;
+  font-size: inherit;
+  line-height: inherit;
+}
+
+textarea {
+  resize: vertical;
+}
+
+/** Layout **/
+.vspace-sm { margin-top: 1em; }
+.vspace-md { margin-top: 2em; }
+.vspace-lg { margin-top: 3em; }
+
+.container {
+  max-width: 960px;
+  width: 100%;
+  padding-right: 0.75rem;
+  padding-left: 0.75rem;
+  margin-right: auto;
+  margin-left: auto;
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+}
+
+section {
+  overflow-y: hidden;
+  opacity: 1;
+  max-height: 2048px;
+  transition: max-height 100ms ease-in-out,
+    margin 100ms ease-in-out,
+    opacity 100ms ease-in-out;
+}
+section.closed {
+  max-height: 0;
+  margin: 0;
+  opacity: 0;
+}
+
+article {
+  overflow-y: hidden;
+  opacity: 1;
+  max-height: 1024px;
+  transition: max-height 100ms ease-in-out,
+    margin 100ms ease-in-out,
+    opacity 100ms ease-in-out;
+}
+article.closed {
+  max-height: 0;
+  margin: 0;
+  opacity: 0;
+}
+/** Components **/
+
+/** c - badge **/
+.badge {
+  display: inline-block;
+  text-align: center;
+  line-height: 1;
+  border: 1px solid #eee9fc;
+  border-radius: 0.375rem;
+  font-size: 0.75em;
+  padding: 0.35em 0.65em;
+  text-align: center;
+  vertical-align: baseline;
+  white-space: nowrap;
+}
+
+/** c - form-control **/
+.form-control {
+  display: block;
+  width: 100%;
+  padding: .375rem .75rem;
+  font-size: 1rem;
+  font-weight: 400;
+  line-height: 1.5;
+  color: #eee9fc;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  background-color: #1a1721;
+  background-clip: padding-box;
+  border: 1px solid #938aad;
+  border-radius: 0.375rem;
+  transition: border-color .15s ease-in-out, box-shadow .15s ease-in-out;
+}
+.form-control:focus {
+  color: #eee9fc;
+  background-color: #1a1721;
+  border-color: #e965a5;
+  outline: 0;
+  box-shadow: 0 0 0 .25rem rgb(225, 146, 239, 0.25);
+}
+
+textarea.form-control {
+  min-height: 2.25rem;
+}
+
+/** c - button **/
+.btn {
+  display: inline-block;
+  padding: 0.5rem 1rem;
+  border-radius: 0.5rem;
+
+  text-align: center;
+  font-size: 1.25rem;
+  vertical-align: middle;
+  cursor: pointer;
+
+  user-select: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+
+  background-color: #282433;
+
+  transition: color 0.15s ease-in-out,
+    background-color 0.15s ease-in-out,
+    border-color 0.15s ease-in-out,
+    box-shadow 0.15s ease-in-out;
+}
+.btn:hover {
+  background-color: #3f3951;
+}
+.btn > .hide-until-active {
+  display: none;
+}
+.btn.active {
+  border: 1px solid #e965a5;
+  color: #e965a5;
+}
+.btn.active > .hide-until-active {
+  display: initial;
+}
+
+.btn .badge {
+  position: relative;
+  top: -1px;
+}
+.btn.active .badge {
+  border-color: #e965a5;
+}
+
+/** c - alert **/
+.alert {
+  margin-bottom: 1rem;
+  border: 1px solid transparent;
+  border-radius: 0.375rem;
+  padding: 1rem;
+  background-color: #282433;
+}
+.alert.alert-primary {
+  border-color: #e965a5;
+}
+.alert.alert-primary h1,
+.alert.alert-primary h2,
+.alert.alert-primary h3,
+.alert.alert-primary h4,
+.alert.alert-primary h5 {
+  color: #e965a5;
+}
+
+.alert.alert-secondary {
+  border-color: #b1f2a7;
+}
+.alert.alert-secondary h1,
+.alert.alert-secondary h2,
+.alert.alert-secondary h3,
+.alert.alert-secondary h4,
+.alert.alert-secondary h5 {
+  color: #b1f2a7;
+}
+
+
+/** c - panel **/
+.panel {
+  border: 1px solid #938aad;
+  border-radius: 0.375rem;
+  overflow: hidden;
+  margin-bottom: 1rem;
+}
+
+/** c - progress **/
+.progress {
+  display: flex;
+  height: 1em;
+  overflow: hidden;
+  font-size: 0.75rem;
+
+  background-color: #3f3951;
+  border-radius: 0.5rem;
+}
+
+.progress .progress-bar {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  overflow: hidden;
+
+  white-space: nowrap;
+  text-align: center;
+
+  background-color: #e965a5;
+  transition: width 100ms ease;
+}
+
+.label {
+  text-align: center;
+  padding: 0.5rem 1rem;
+}
+
+/** c - throbber **/
+@keyframes throbber-dot {
+  from { opacity: 0.1; }
+  to { opacity: 1; }
+}
+
+.throbber {
+  display: inline-block;
+}
+
+.throbber .dot {
+  display: inline-block;
+  margin: 0 0.125rem;
+  width: 0.75rem;
+  height: 0.75rem;
+  border-radius: 0.375rem;
+  background-color: #eee9fc;
+
+  opacity: 0.1;
+}
+
+.throbber .dot:nth-child(3n+1) {
+  animation: throbber-dot 900ms ease-in-out 0s infinite alternate;
+}
+.throbber .dot:nth-child(3n+2) {
+  animation: throbber-dot 900ms ease-in-out 300ms infinite alternate;
+}
+.throbber .dot:nth-child(3n) {
+  animation: throbber-dot 900ms ease-in-out 600ms infinite alternate;
+}
+
+/** c - choice-list **/
+.choice-list {
+  width: 100%;
+  text-align: center;
+  margin-bottom: 0.5rem;
+}
+
+/** Special theme colors **/
+
+.hint-user { color: #b1f2a7; }
+.hint-chatbot { color: #e965a5; }
+.hint-strategy { color: #e965a5; }
+.hint-level { color: #e192ef; }
+
+@keyframes shake {
+  from { transform: translateX(-10px); }
+  to { transform: translateX(10px); }
+}
+
+.shake {
+  animation: shake 80ms linear infinite alternate;
+}
+
+/** Special app-specific items **/
+.panel.chat {
+  display: flex;
+  flex-direction: column-reverse;
+  align-items: stretch;
+  height: 500px;
+  overflow-y: auto;
+}
+.panel.chat .message {
+  display: inline-block;
+  position: relative;
+}
+.panel.chat .message::after {
+  content: "";
+  clear: both;
+  display: table;
+}
+
+.panel.chat .message.chatbot {
+  background-color: #3f3951;
+}
+.panel.chat .message.chatbot ::selection {
+  background-color: #938aad;
+  color: #1a1721;
+}
+.panel.chat .message.user {
+  background-color: #282433;
+}
+.panel.chat .message .avatar {
+  width: 3rem;
+  height: 3rem;
+  margin: 1rem 1rem 2rem 1rem;
+  border-radius: 0.375rem;
+  background-color: #eee9fc;
+}
+.panel.chat .message .content {
+  float: left;
+  margin-left: 5rem;
+  margin-top: 1rem;
+  padding: 0 1rem 0 0;
+  word-break: break-word;
+}
+.panel.chat .message.user .avatar { background-color: #b1f2a7;}
+.panel.chat .message.chatbot .avatar { background-color: #e965a5;}
+
+.question .text {
+  font-size: 1.2em;
+  margin-bottom: 1rem;
+}
