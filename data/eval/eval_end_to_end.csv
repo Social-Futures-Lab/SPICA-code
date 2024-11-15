@@ -1,4 +1,4 @@
-,CaseId,Model,DemoGroup,AlignmentTarget,SystemCondition,PromptStrategy,DeltaRatingScore
+,CaseId,Model,DemoGroup,AlignmentTarget,SystemCondition,PromptStrategy,DeltaRating
 0,c2299,gpt-4o,rep-rel,own,spica,"RESP, CONT",0
 1,c2299,gpt-4o,rep-rel,own,baseline,"RESP, POS",0
 2,c2299,gpt-4o,rep-rel,own,spica,"INST, POS",0
