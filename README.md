@@ -6,13 +6,13 @@ Authors: Quan Ze Chen, K.J. Kevin Feng, Chan Young Park, Amy X. Zhang
 
 Link: TBD
 
-![Overview Diagram](https://github.com/Social-Futures-Lab/SPICA-code/docs/figs/system-components.png?raw=true)
+![Overview Diagram](https://github.com/Social-Futures-Lab/SPICA-code/blob/main/docs/figs/system-components.png?raw=true)
 
 When aligning large language models (LLMs) to societal values, it is important to address a plurality of values reflected by diverse groups and communities. Existing in-context learning approaches for alignment often only consider similarity to the query when drawing few-shot examples, not accounting for cross-group differences around which values are prioritized.
 
 In this work, we propose SPICA, a framework for pluralistic alignment that accounts for group-level differences during in-context example retrieval. We introduce three designs to facilitate pluralistic alignment: scenario banks, group-informed metrics, and in-context alignment prompts.
 
-## Overview 
+## Overview
 
 This repository contains
 
@@ -20,7 +20,7 @@ To cite our work, please refer to CITATION.cff or use the following:
 
 ```bibTex
 @misc {
-    PLACEHOLDER 
+    PLACEHOLDER
 }
 ```
 
