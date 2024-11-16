@@ -6,7 +6,7 @@ Authors: Quan Ze Chen, K.J. Kevin Feng, Chan Young Park, Amy X. Zhang
 
 Link: TBD
 
-![Overview Diagram](https://github.com/Social-Futures-Lab/SPICA-code/docs/high-level-diagram.png?raw=true)
+![Overview Diagram](https://github.com/Social-Futures-Lab/SPICA-code/docs/figs/system-components.png?raw=true)
 
 When aligning large language models (LLMs) to societal values, it is important to address a plurality of values reflected by diverse groups and communities. Existing in-context learning approaches for alignment often only consider similarity to the query when drawing few-shot examples, not accounting for cross-group differences around which values are prioritized.
 
@@ -19,7 +19,9 @@ This repository contains
 To cite our work, please refer to CITATION.cff or use the following:
 
 ```bibTex
-@misc {}
+@misc {
+    PLACEHOLDER 
+}
 ```
 
 ## Repository Layout
