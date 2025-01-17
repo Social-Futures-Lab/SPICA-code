@@ -19,8 +19,14 @@ This repository contains
 To cite our work, please refer to CITATION.cff or use the following:
 
 ```bibTex
-@misc {
-    PLACEHOLDER
+@misc{chen2024spicaretrievingscenariospluralistic,
+  title={SPICA: Retrieving Scenarios for Pluralistic In-Context Alignment},
+  author={Quan Ze Chen and K. J. Kevin Feng and Chan Young Park and Amy X. Zhang},
+  year={2024},
+  eprint={2411.10912},
+  archivePrefix={arXiv},
+  primaryClass={cs.CL},
+  url={https://arxiv.org/abs/2411.10912},
 }
 ```
 
